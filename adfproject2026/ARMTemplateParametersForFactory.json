@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfproject2026"
+		},
+		"ls_azsql_sink_password": {
+			"value": ""
+		},
+		"ls_mysql_src_password": {
+			"value": ""
+		},
+		"ls_azsql_sink_properties_typeProperties_server": {
+			"value": "migrationdb101.database.windows.net"
+		},
+		"ls_azsql_sink_properties_typeProperties_database": {
+			"value": "migrationdb"
+		},
+		"ls_azsql_sink_properties_typeProperties_userName": {
+			"value": "pavan"
+		},
+		"ls_mysql_src_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"ls_mysql_src_properties_typeProperties_database": {
+			"value": "retail_db"
+		},
+		"ls_mysql_src_properties_typeProperties_username": {
+			"value": "root"
+		}
+	}
+}

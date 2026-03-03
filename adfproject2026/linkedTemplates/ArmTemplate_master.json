@@ -1,0 +1,98 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfproject2026"
+		},
+		"ls_azsql_sink_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azsql_sink'"
+		},
+		"ls_mysql_src_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_mysql_src'"
+		},
+		"ls_azsql_sink_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "migrationdb101.database.windows.net"
+		},
+		"ls_azsql_sink_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "migrationdb"
+		},
+		"ls_azsql_sink_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "pavan"
+		},
+		"ls_mysql_src_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost"
+		},
+		"ls_mysql_src_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "retail_db"
+		},
+		"ls_mysql_src_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "root"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfproject2026_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_azsql_sink_password": {
+						"value": "[parameters('ls_azsql_sink_password')]"
+					},
+					"ls_mysql_src_password": {
+						"value": "[parameters('ls_mysql_src_password')]"
+					},
+					"ls_azsql_sink_properties_typeProperties_server": {
+						"value": "[parameters('ls_azsql_sink_properties_typeProperties_server')]"
+					},
+					"ls_azsql_sink_properties_typeProperties_database": {
+						"value": "[parameters('ls_azsql_sink_properties_typeProperties_database')]"
+					},
+					"ls_azsql_sink_properties_typeProperties_userName": {
+						"value": "[parameters('ls_azsql_sink_properties_typeProperties_userName')]"
+					},
+					"ls_mysql_src_properties_typeProperties_server": {
+						"value": "[parameters('ls_mysql_src_properties_typeProperties_server')]"
+					},
+					"ls_mysql_src_properties_typeProperties_database": {
+						"value": "[parameters('ls_mysql_src_properties_typeProperties_database')]"
+					},
+					"ls_mysql_src_properties_typeProperties_username": {
+						"value": "[parameters('ls_mysql_src_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
